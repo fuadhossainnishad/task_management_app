@@ -1,22 +1,20 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
 export default function OnboardingScreen() {
   return (
-    <View className="flex-1 bg-white px-4 pt-10">
-      {/* Heading & Description */}
-      <View className="">
+    <View className="flex-1 bg-white text-black pt-10">
+      <View className="px-4">
         <Text className="text-lg font-bold mb-2">
           Easily Manage Jobs Across Teams
         </Text>
-        <Text className="text-base font-normal text-gray-700">
+        <Text className="text-base font-normal">
           Set up jobs, assign crews, and keep everything organized from the
           start.
         </Text>
       </View>
-
-      {/* Image container with fixed height */}
-      <View className="w-full h-[400px] items-center justify-center">
+      <View className="w-full h-[400px] items-center justify-center mt-20">
         <Image
           source={require('../assets/images/onboard.png')}
           className="w-full h-full"
@@ -24,19 +22,22 @@ export default function OnboardingScreen() {
         />
       </View>
 
-      {/* Buttons */}
-      <View className="flex-row justify-between items-center mt-10 px-2">
-        <TouchableOpacity onPress={() => console.log('Skip pressed')}>
-          <Text className="text-lg ">Skip</Text>
-        </TouchableOpacity>
+      <LinearGradient
+        colors={['#B09050', '#FFFFFF']}
+        start={{ x: 0.5, y: 1 }}
+        end={{ x: 0.5, y: 0 }}
+        className="w-full "
+      >
+        <View className="flex-row justify-end items-center px-4 pb-8">
+          <TouchableOpacity>
+            <Text className="text-lg font-semibold">Skip</Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity
-          onPress={() => console.log('Next pressed')}
-          className="bg-blue-600 px-6 py-2 rounded-full"
-        >
-          <Text className="font-semibold text-lg">Next</Text>
-        </TouchableOpacity>
-      </View>
+          {/* <TouchableOpacity className="bg-blue-600 px-6 py-2 rounded-full">
+            <Text className="font-semibold text-lg">Next</Text>
+          </TouchableOpacity> */}
+        </View>
+      </LinearGradient>
     </View>
   );
 }
