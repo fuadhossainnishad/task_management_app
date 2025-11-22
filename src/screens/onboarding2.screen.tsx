@@ -1,44 +1,49 @@
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
-// import LinearGradient from 'react-native-linear-gradient';
+import LinearGradient from 'react-native-linear-gradient';
+import { RootStackParamList } from '../navigation/AppNavigator';
 
-export default function OnboardingScreen2() {
+type Props = NativeStackScreenProps<RootStackParamList, 'Onboarding2'>;
+
+export default function OnboardingScreen2({ navigation }: Props) {
   return (
-    <View
-      // colors={['#2F2F2F', '#2E8B57']}
-      className="flex-1 justify-between items-center bg-white w-full h-full"
-    >
-      {/* Heading & Description */}
-      <View className="flex-1 justify-center items-center">
-        <Text className="text-white text-lg font-bold text-center mb-8">
-          Easily Manage Jobs Across Teams
+    <View className="flex-1 bg-white text-black pt-10">
+      <View className="px-4">
+        <Text className="text-lg font-bold mb-2">
+          Stay Updated with Field Reports{' '}
         </Text>
-        <Text className="text-gray-200 text-base font-normal text-center px-4">
-          Set up jobs, assign crews, and keep everything organized from the
-          start.
+        <Text className="text-base font-normal">
+          Daily reports and punchlist items - submitted fast and in real time
         </Text>
       </View>
-
-      {/* Image */}
-      <Image
-        source={require('../assets/images/onboard.png')}
-        className="w-80 h-80 "
-        resizeMode="contain"
-      />
-
-      {/* Buttons */}
-      <View className="flex-row justify-between w-full px-4 mb-4">
-        <TouchableOpacity onPress={() => console.log('Skip pressed')}>
-          <Text className="text-gray-200 text-lg">Skip</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={() => console.log('Next pressed')}
-          className="bg-primary px-6 py-2 rounded-full"
-        >
-          <Text className="text-white font-semibold text-lg">Next</Text>
-        </TouchableOpacity>
+      <View className="w-full h-[400px] items-center justify-center mt-20">
+        <Image
+          source={require('../assets/images/onboard2.png')}
+          className="w-full h-full"
+          resizeMode="contain"
+        />
       </View>
+
+      <LinearGradient
+        colors={['#C09050', '#FFFFFF']}
+        start={{ x: 0.5, y: 1 }}
+        end={{ x: 0.5, y: 0 }}
+        className="w-full h-[300px] justify-center"
+      >
+        <View className="flex flex-row items-end justify-between px-8">
+          <TouchableOpacity onPress={() => navigation.navigate('Onboarding')}>
+            <Text className="text-lg font-semibold">GO BACK</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Onboarding3')}>
+            <Text className="text-lg font-semibold">SKIP</Text>
+          </TouchableOpacity>
+
+          {/* <TouchableOpacity className="bg-blue-600 px-6 py-2 rounded-full">
+            <Text className="font-semibold text-lg">Next</Text>
+          </TouchableOpacity> */}
+        </View>
+      </LinearGradient>
     </View>
   );
 }

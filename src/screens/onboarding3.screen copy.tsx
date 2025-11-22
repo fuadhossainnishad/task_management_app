@@ -4,23 +4,22 @@ import { View, Text, Image, TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { RootStackParamList } from '../navigation/AppNavigator';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Onboarding'>;
+type Props = NativeStackScreenProps<RootStackParamList, 'Onboarding3'>;
 
-export default function OnboardingScreen({ navigation }: Props) {
+export default function OnboardingScreen3({ navigation }: Props) {
   return (
     <View className="flex-1 bg-white text-black pt-10">
       <View className="px-4">
         <Text className="text-lg font-bold mb-2">
-          Easily Manage Jobs Across Teams
+          Keep Expense Records Clean{' '}
         </Text>
         <Text className="text-base font-normal">
-          Set up jobs, assign crews, and keep everything organized from the
-          start.
+          Upload material and purchase receipts in seconds - no paperwork needed
         </Text>
       </View>
       <View className="w-full h-[400px] items-center justify-center mt-20">
         <Image
-          source={require('../assets/images/onboard.png')}
+          source={require('../assets/images/onboard3.png')}
           className="w-full h-full"
           resizeMode="contain"
         />
@@ -32,9 +31,9 @@ export default function OnboardingScreen({ navigation }: Props) {
         end={{ x: 0.5, y: 0 }}
         className="w-full h-[300px] justify-center"
       >
-        <View className="flex flex-col items-end justify-center px-8">
+        <View className="flex flex-row justify-between px-8">
           <TouchableOpacity onPress={() => navigation.navigate('Onboarding2')}>
-            <Text className="text-lg font-semibold">SKIP</Text>
+            <Text className="text-lg font-semibold">GO BACK</Text>
           </TouchableOpacity>
 
           {/* <TouchableOpacity className="bg-blue-600 px-6 py-2 rounded-full">
