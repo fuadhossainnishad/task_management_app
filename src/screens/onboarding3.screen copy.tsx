@@ -35,6 +35,9 @@ export default function OnboardingScreen3({ navigation }: Props) {
           <TouchableOpacity onPress={() => navigation.navigate('Onboarding2')}>
             <Text className="text-lg font-semibold">GO BACK</Text>
           </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+            <Text className="text-lg font-semibold">START</Text>
+          </TouchableOpacity>
 
           {/* <TouchableOpacity className="bg-blue-600 px-6 py-2 rounded-full">
             <Text className="font-semibold text-lg">Next</Text>
