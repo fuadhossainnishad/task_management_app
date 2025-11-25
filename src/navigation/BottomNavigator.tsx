@@ -3,8 +3,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { View, Text, StyleSheet } from "react-native";
 import { RouteProp } from "@react-navigation/native";
 
-import Home from "../screens/home/Home.screen";
-import Notification from "../screens/home/Notification.screen";
 import Account from "../screens/home/Account.screen";
 
 /* ----------------------------------------------
@@ -14,6 +12,8 @@ import HomeIcon from "../assets/icons/home.svg";
 import HomeIconOutline from "../assets/icons/homeOutline.svg";
 import NotificationIcon from "../assets/icons/notification.svg";
 import NotificationIconOutline from "../assets/icons/notificationOutline.svg";
+import NotificationNavigator from "./NotificationNavigator";
+import HomeNavigator from "./HomeNavigator";
 
 /* ----------------------------------------------
    TYPE DEFINITIONS
@@ -22,6 +22,7 @@ export type RootTabParamList = {
     Home: undefined;
     Notifications: undefined;
     Account: undefined;
+
 };
 
 type TabIconProps = {
@@ -39,7 +40,7 @@ function TabIcon({ routeName, focused }: TabIconProps) {
     switch (routeName) {
         case "Home":
             IconComponent = focused ? HomeIcon : HomeIconOutline;
-            label = "Home";
+            label = "Dashboard";
             break;
         case "Notifications":
             IconComponent = focused ? NotificationIcon : NotificationIconOutline;
@@ -87,9 +88,10 @@ export default function BottomTabs() {
                 tabBarIcon: renderTabIcon(route),
             })}
         >
-            <Tab.Screen name="Home" component={Home} />
-            <Tab.Screen name="Notifications" component={Notification} />
+            <Tab.Screen name="Home" component={HomeNavigator} />
+            <Tab.Screen name="Notifications" component={NotificationNavigator} />
             <Tab.Screen name="Account" component={Account} />
+
         </Tab.Navigator>
     );
 }

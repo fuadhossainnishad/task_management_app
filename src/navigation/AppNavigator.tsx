@@ -94,6 +94,7 @@ export default function AppNavigator() {
           component={BottomTabs}
           options={{ headerShown: false }}
         />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
