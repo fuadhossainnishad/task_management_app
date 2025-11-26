@@ -5,6 +5,8 @@ import { useNavigation } from '@react-navigation/native';
 
 import SwipIcon from "../../assets/icons/swipe.svg"
 import JobsIcon from "../../assets/icons/job2.svg"
+import ItemsIcon from "../../assets/icons/item.svg"
+
 import Jobs2Icon from "../../assets/icons/jobs.svg"
 
 import ReportIcon from "../../assets/icons/report.svg"
@@ -53,16 +55,67 @@ export default function Home() {
 
 function Dashboard() {
     return (
-        <View className='bg-white p-4 mx-4 rounded-xl'>
-            <Text className='text-lg font-semibold'>
+        <View className=" bg-white mx-4 mt-2 p-4 gap-2 rounded-lg">
+            <Text className="text-lg font-semibold ">
                 Active Jobs & Punchlist Overview
             </Text>
-            <View className='p-2 bg-[#F8EFE4]'>
-                <JobsIcon height={48} width={48} className='-m-2 self-end' />
-            </View>
+
+            <View className='flex-row gap-4'>
+                <View className="bg-bg_primary flex-1 p-4 rounded-xl relative">
+                    <View className="absolute top-0 right-0">
+                        <JobsIcon width={40} height={40} />
+                    </View>
+                    <Text className="text-lg font-semibold mb-2">
+                        105
+                    </Text>
+                    <Text className="text-lg font-semibold mb-2 text-[#62636C]">
+                        Total Jobs
+                    </Text>
+
+                    <View className="flex-row justify-evenly mt-2">
+                        <View className="">
+                            <Text className="font-semibold text-orange-600 self-center">6</Text>
+                            <Text className="text-gray-600">Pending</Text>
+
+                        </View>
+                        <View className=" mb-1">
+                            <Text className="font-semibold text-green-600 self-center">12</Text>
+                            <Text className="text-gray-600">Completed</Text>
+                        </View>
+                    </View>
+                </View>
+
+                <View className="bg-bg_primary flex-1 p-4 rounded-xl relative">
+                    <View className="absolute top-0 right-0">
+                        <ItemsIcon width={40} height={40} />
+                    </View>
+
+                    <Text className="text-lg font-semibold mb-2">
+                        105
+                    </Text>
+
+                    <Text className="text-lg font-semibold mb-2 text-[#62636C]">
+                        Total Bullet Item
+                    </Text>
+
+                    <View className="flex-row justify-evenly mt-2">
+                        <View className="">
+                            <Text className="font-semibold text-orange-600 self-center">6</Text>
+                            <Text className="text-gray-600">Pending</Text>
+
+                        </View>
+                        <View className=" mb-1">
+                            <Text className="font-semibold text-green-600 self-center">12</Text>
+                            <Text className="text-gray-600">Completed</Text>
+                        </View>
+                    </View>
+                </View></View>
+
+
         </View>
-    )
+    );
 }
+
 
 function Options() {
     const links = [
