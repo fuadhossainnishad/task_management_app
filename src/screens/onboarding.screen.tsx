@@ -32,7 +32,7 @@ export default function OnboardingScreen({ navigation }: Props) {
         end={{ x: 0.5, y: 0 }}
         className="w-full h-[300px] justify-center"
       >
-        <View className="flex flex-col items-end justify-center px-8">
+        <View className="flex-col items-end  px-8">
           <TouchableOpacity onPress={() => navigation.navigate('Onboarding2')}>
             <Text className="text-lg font-semibold">SKIP</Text>
           </TouchableOpacity>
