@@ -4,10 +4,15 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Home from '../screens/home/Home.screen';
 import SwitchCompanyScreen from '../screens/home/SwitchCompany.screen';
+import JobManagementNavigator from './JobNavigator';
 
 export type HomeStackParamList = {
     Dashboard: undefined
     SwitchCompany: undefined;
+    Job: undefined
+    // Reports: undefined
+    // Receipts: undefined
+    // Punchlist: undefined
 };
 
 export default function HomeNavigator() {
@@ -24,6 +29,27 @@ export default function HomeNavigator() {
                 component={SwitchCompanyScreen}
                 options={{ headerShown: false }}
             />
+            <Stack.Screen
+                name="Job"
+                component={JobManagementNavigator}
+                options={{ headerShown: false }}
+            />
+            {/* <Stack.Screen
+                name="Reports"
+                component={SwitchCompanyScreen}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="Receipts"
+                component={SwitchCompanyScreen}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="Punchlist"
+                component={SwitchCompanyScreen}
+                options={{ headerShown: false }}
+            /> */}
+
         </Stack.Navigator>
     );
 }
