@@ -67,7 +67,7 @@ export default function SwitchCompanyScreen() {
             <View className="flex-row items-center bg-white mx-4 mt-4 rounded-xl px-4 p-3">
                 <SearchIcon width={20} height={20} style={styles.searchIcon} />
                 <TextInput
-                    className="flex-1 h-10 text-base text-gray-800"
+                    className="flex-1 h-10 text-base text-gray-800 items-center"
                     placeholder="Search company..."
                     value={searchText}
                     onChangeText={setSearchText}

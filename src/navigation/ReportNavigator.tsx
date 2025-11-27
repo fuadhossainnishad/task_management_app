@@ -1,14 +1,14 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import JobListScreen from '../screens/job/jobList.screen';
 import CreateJobScreen from '../screens/job/createJob.screen';
 import JobDetailsScreen from '../screens/job/jobDetails.screen';
+import ReportListScreen from '../screens/reports/reportList.screen';
 
-export type JobStackParamList = {
-  JobList: undefined;
-  CreateJob: undefined;
-  JobDetails: {
-    job: {
+export type ReportStackParamList = {
+  ReportList: undefined;
+  Createreport: undefined;
+  ReportDetails: {
+    report: {
       id: string;
       date: string;
       jobName: string;
@@ -22,22 +22,22 @@ export type JobStackParamList = {
   };
 };
 
-export default function JobManagementNavigator() {
-  const Stack = createNativeStackNavigator<JobStackParamList>();
+export default function ReportManagementNavigator() {
+  const Stack = createNativeStackNavigator<ReportStackParamList>();
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="JobList"
-        component={JobListScreen}
+        name="ReportList"
+        component={ReportListScreen}
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="CreateJob"
+        name="Createreport"
         component={CreateJobScreen}
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="JobDetails"
+        name="ReportDetails"
         component={JobDetailsScreen}
         options={{ headerShown: false }}
       />
