@@ -142,3 +142,9 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
   },
 });
+
+export function PunchlistTopPart() {
+  return (
+    
+  )
+}

@@ -1,22 +1,13 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import PunchListScreen from '../screens/punchlist/punchList.screen';
+import PunchlistDetailsScreen from '../screens/punchlist/punchlistDetails.screen';
+import CreatePunchlistScreen from '../screens/punchlist/createPunchlist.screen';
 
 export type PunchStackParamList = {
   PunchList: undefined;
   CreatePunchlist: undefined;
-  PunchlistDetails: {
-    punchlist: {
-      punchlistId: string;
-      jobName:string
-      date: string;
-      phone: string;
-      punchlistCreator: string;
-      pending: number;
-      completed: number;
-      totalItem: number;
-    };
-  };
+  PunchlistDetails: any
 };
 
 export default function PunchListNavigator() {
@@ -30,12 +21,12 @@ export default function PunchListNavigator() {
       />
       <Stack.Screen
         name="CreatePunchlist"
-        component={PunchListScreen}
+        component={CreatePunchlistScreen}
         options={{ headerShown: false }}
       />
       <Stack.Screen
         name="PunchlistDetails"
-        component={PunchListScreen}
+        component={PunchlistDetailsScreen}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

@@ -137,7 +137,7 @@ export default function PunchListScreen() {
                 )
                 .map(([key, value], ind) => (
                   <View
-                    className="items-center flex-row gap-1 px-2 bg-[#423526]/10 rounded-full"
+                    className="items-center flex-row gap-1 px-3 py-1 bg-[#423526]/10 rounded-full"
                     key={ind}
                   >
                     <Text className="text-base font-bold">{value}</Text>
@@ -155,14 +155,13 @@ export default function PunchListScreen() {
         ))}
       </ScrollView>
 
-      {/* FLOATING BUTTON */}
       <TouchableOpacity
         onPress={() => navigation.navigate('CreatePunchlist')}
         className="bg-[#B09050] px-6 py-4 rounded-full shadow-lg"
         style={styles.btn}
       >
         <Text className="text-black text-center font-normal text-lg">
-          Create New Punchlist
+          Create Punchlist
         </Text>
       </TouchableOpacity>
     </View>
