@@ -72,3 +72,13 @@ export function PunchlistAction() {
     </View>
   );
 }
+
+export function MailSettingsAction() {
+  return (
+    <View>
+      <Actions
+        actions={ActionArray.filter(action => action.name !== 'Completed')}
+      />
+    </View>
+  );
+}

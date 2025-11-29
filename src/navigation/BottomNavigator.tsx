@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { View, Text, StyleSheet } from 'react-native';
 import { RouteProp } from '@react-navigation/native';
 
-import Account from '../screens/home/Account.screen';
+// import Account from '../screens/home/Account.screen';
 
 /* ----------------------------------------------
    IMPORT YOUR SVG ICONS
@@ -15,6 +15,7 @@ import NotificationIconOutline from '../assets/icons/notificationOutline.svg';
 import Profile from '../assets/icons/profile.svg';
 import NotificationNavigator from './NotificationNavigator';
 import HomeNavigator from './HomeNavigator';
+import SettingsManagementNavigator from './SettingsNavigator';
 
 /* ----------------------------------------------
    TYPE DEFINITIONS
@@ -95,7 +96,7 @@ export default function BottomTabs() {
     >
       <Tab.Screen name="Home" component={HomeNavigator} />
       <Tab.Screen name="Notifications" component={NotificationNavigator} />
-      <Tab.Screen name="Account" component={Account} />
+      <Tab.Screen name="Account" component={SettingsManagementNavigator} />
     </Tab.Navigator>
   );
 }
