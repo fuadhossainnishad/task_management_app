@@ -145,7 +145,7 @@ function Options() {
     {
       id: 3,
       title: 'Punchlist',
-      route: 'Job',
+      route: 'Punchlist',
       icon: <PunchlistIcon width={52} height={52} />,
     },
     {

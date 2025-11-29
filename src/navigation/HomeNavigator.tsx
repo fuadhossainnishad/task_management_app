@@ -5,6 +5,7 @@ import Home from '../screens/home/Home.screen';
 import SwitchCompanyScreen from '../screens/home/SwitchCompany.screen';
 import JobManagementNavigator from './JobNavigator';
 import ReportManagementNavigator from './ReportNavigator';
+import PunchListNavigator from './PunchListNavigator';
 
 export type HomeStackParamList = {
   Dashboard: undefined;
@@ -12,7 +13,7 @@ export type HomeStackParamList = {
   Job: undefined;
   Reports: undefined;
   // Receipts: undefined
-  // Punchlist: undefined
+  Punchlist: undefined;
 };
 
 export default function HomeNavigator() {
@@ -39,13 +40,13 @@ export default function HomeNavigator() {
         component={ReportManagementNavigator}
         options={{ headerShown: false }}
       />
+      <Stack.Screen
+        name="Punchlist"
+        component={PunchListNavigator}
+        options={{ headerShown: false }}
+      />
       {/* <Stack.Screen
                 name="Receipts"
-                component={SwitchCompanyScreen}
-                options={{ headerShown: false }}
-            />
-            <Stack.Screen
-                name="Punchlist"
                 component={SwitchCompanyScreen}
                 options={{ headerShown: false }}
             /> */}
