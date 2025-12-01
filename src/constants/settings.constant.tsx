@@ -7,59 +7,70 @@ import SubscriptionIcon from '../assets/icons/subscription.svg';
 import AboutIcon from '../assets/icons/about.svg';
 import RateIcon from '../assets/icons/rate.svg';
 import PPIcon from '../assets/icons/pp.svg';
+import { JSX } from 'react';
+import { SettingsStackParamList } from '../navigation/SettingsNavigator';
 
-export const BusinessSettingsArray = [
+export type SettingItem =
+  | { name: string; icon: JSX.Element; route: Exclude<keyof SettingsStackParamList, 'InfoScreen'> }
+  | { name: string; icon: JSX.Element; route: 'InfoScreen'; params: { title: string; slug: string, content: string } };
+
+
+export const BusinessSettingsArray: SettingItem[] = [
   {
     name: 'Company Profile',
     icon: <CompanyProfileIcon height={24} width={24} />,
-    route: 'companyProfile',
+    route: 'MailSettings',
   },
   {
     name: 'App Color',
     icon: <AppColorIcon height={24} width={24} />,
-    route: 'app',
+    route: 'MailSettings',
   },
   {
     name: 'Users',
     icon: <UserIcon height={24} width={24} />,
-    route: 'companyProfile',
+    route: 'MailSettings',
   },
   {
     name: 'Roles',
     icon: <RoleIcon height={24} width={24} />,
-    route: 'companyProfile',
+    route: 'MailSettings',
   },
   {
     name: 'Email Settings',
     icon: <MailIcon height={24} width={24} />,
-    route: 'companyProfile',
+    route: 'MailSettings',
   },
   {
     name: 'Subscription',
     icon: <SubscriptionIcon height={24} width={24} />,
-    route: 'companyProfile',
+    route: 'MailSettings',
   },
 ];
 
-export const OthersSettingsArray = [
+export const OthersSettingsArray: SettingItem[] = [
   {
     name: 'About App',
     icon: <AboutIcon height={24} width={24} />,
-    route: 'companyProfile',
+    route: 'InfoScreen',
+    params: { content: 'This is About App', slug: 'about-us', title: 'About App' },
   },
   {
     name: 'Rate App',
     icon: <RateIcon height={24} width={24} />,
-    route: 'companyProfile',
+    route: 'MailSettings',
   },
+
   {
     name: 'Privacy Policy',
     icon: <PPIcon height={24} width={24} />,
-    route: 'companyProfile',
+    route: 'InfoScreen',
+    params: { content: "This is Privacy Policy", slug: 'privacy-policy', title: 'Privacy Policy' },
   },
   {
     name: 'Terms & Conditions',
     icon: <PPIcon height={24} width={24} />,
-    route: 'companyProfile',
+    route: 'InfoScreen',
+    params: { content: "This is Terms & Conditions", slug: 'terms-conditions', title: 'Terms & Conditions' },
   },
 ];

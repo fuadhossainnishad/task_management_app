@@ -2,6 +2,7 @@ import { Image, Text, TouchableOpacity, View, ScrollView } from 'react-native';
 import {
   BusinessSettingsArray,
   OthersSettingsArray,
+  SettingItem,
 } from '../../constants/settings.constant';
 import ArrowIcon from '../../assets/icons/arrow.svg';
 import LogoutIcon from '../../assets/icons/logout.svg';
@@ -13,6 +14,16 @@ type Props = NativeStackNavigationProp<SettingsStackParamList, 'Settings'>;
 
 export default function SettingsScreen() {
   const navigation = useNavigation<Props>();
+
+  const handlePress = (item: SettingItem) => {
+    if (item.route === 'InfoScreen') {
+      navigation.navigate(item.route, item.params); // InfoScreen requires params
+    } else {
+      navigation.navigate(item.route); // paramless screens
+    }
+  };
+
+
   return (
     <View className="flex-1">
       <View className="bg-white flex-row items-center px-6 py-4 mb-6 border-b border-b-[#D8D9E0]">
@@ -45,9 +56,7 @@ export default function SettingsScreen() {
             <TouchableOpacity
               key={ind}
               className="flex-row justify-between items-center bg-white px-3 py-4 rounded-lg"
-              onPress={() => {
-                navigation.navigate(item.route as keyof SettingsStackParamList);
-              }}
+              onPress={() => handlePress(item)}
             >
               <View className="flex-row gap-3 items-center">
                 {item.icon}
@@ -63,9 +72,7 @@ export default function SettingsScreen() {
             <TouchableOpacity
               key={ind}
               className="flex-row justify-between items-center bg-white px-3 py-4 rounded-lg"
-              onPress={() => {
-                navigation.navigate(item.route as keyof SettingsStackParamList);
-              }}
+              onPress={() => handlePress(item)}
             >
               <View className="flex-row gap-3 items-center">
                 {item.icon}
