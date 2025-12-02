@@ -11,20 +11,34 @@ import { JSX } from 'react';
 import { SettingsStackParamList } from '../navigation/SettingsNavigator';
 
 export type SettingItem =
-  | { name: string; icon: JSX.Element; route: Exclude<keyof SettingsStackParamList, 'InfoScreen'> }
-  | { name: string; icon: JSX.Element; route: 'InfoScreen'; params: { title: string; slug: string, content: string } };
-
+  | {
+      name: string;
+      icon: JSX.Element;
+      route: Exclude<keyof SettingsStackParamList, 'InfoScreen'>;
+    }
+  | {
+      name: string;
+      icon: JSX.Element;
+      route: 'InfoScreen';
+      params: { title: string; slug: string; content: string };
+    }
+  | {
+      name: string;
+      icon: JSX.Element;
+      route: 'InfoScreen';
+      params: { title: string; slug: string; content: string };
+    };
 
 export const BusinessSettingsArray: SettingItem[] = [
   {
     name: 'Company Profile',
     icon: <CompanyProfileIcon height={24} width={24} />,
-    route: 'MailSettings',
+    route: 'Profile',
   },
   {
     name: 'App Color',
     icon: <AppColorIcon height={24} width={24} />,
-    route: 'MailSettings',
+    route: 'Appcolor',
   },
   {
     name: 'Users',
@@ -53,7 +67,11 @@ export const OthersSettingsArray: SettingItem[] = [
     name: 'About App',
     icon: <AboutIcon height={24} width={24} />,
     route: 'InfoScreen',
-    params: { content: 'This is About App', slug: 'about-us', title: 'About App' },
+    params: {
+      content: 'This is About App',
+      slug: 'about-us',
+      title: 'About App',
+    },
   },
   {
     name: 'Rate App',
@@ -65,12 +83,20 @@ export const OthersSettingsArray: SettingItem[] = [
     name: 'Privacy Policy',
     icon: <PPIcon height={24} width={24} />,
     route: 'InfoScreen',
-    params: { content: "This is Privacy Policy", slug: 'privacy-policy', title: 'Privacy Policy' },
+    params: {
+      content: 'This is Privacy Policy',
+      slug: 'privacy-policy',
+      title: 'Privacy Policy',
+    },
   },
   {
     name: 'Terms & Conditions',
     icon: <PPIcon height={24} width={24} />,
     route: 'InfoScreen',
-    params: { content: "This is Terms & Conditions", slug: 'terms-conditions', title: 'Terms & Conditions' },
+    params: {
+      content: 'This is Terms & Conditions',
+      slug: 'terms-conditions',
+      title: 'Terms & Conditions',
+    },
   },
 ];

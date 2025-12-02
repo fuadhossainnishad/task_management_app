@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
+import AppHeader from '../../components/AppHeader';
 
 interface Field {
   label: string;
@@ -17,7 +18,9 @@ interface ProfileProps {
   mode: 'view' | 'edit';
   type: 'user' | 'company';
   fields: Field[];
+  onEdit?: () => void;
   onSave?: (data: Field[]) => void;
+  onBack?: () => void;
 }
 
 export default function ProfileScreen({
@@ -25,7 +28,9 @@ export default function ProfileScreen({
   mode,
   type,
   fields,
+  onEdit,
   onSave,
+  onBack,
 }: ProfileProps) {
   const [formData, setFormData] = useState<Field[]>(fields);
 
@@ -36,44 +41,50 @@ export default function ProfileScreen({
   };
 
   return (
-    <ScrollView className="p-4">
-      {/* Title */}
-      <Text className="text-2xl font-semibold mb-4">{title}</Text>
+    <View className="flex-1 bg-white">
+      <AppHeader title={title} onBack={onBack || (() => {})} />
 
-      {/* Fields */}
-      {formData.map((field, index) => (
-        <View key={index} className="mb-4">
-          <Text className="text-gray-500 text-sm mb-1">{field.label}</Text>
+      <ScrollView className="p-6">
+        {/* Fields */}
+        {formData.map((field, index) => (
+          <View key={index} className="mb-5">
+            <Text className="text-gray-500 text-sm mb-1">{field.label}</Text>
 
-          {mode === 'view' ? (
-            <Text className="text-base font-medium">{field.value}</Text>
-          ) : (
-            <TextInput
-              className="border border-gray-300 p-2 rounded-lg bg-white"
-              value={field.value}
-              onChangeText={text => updateField(index, text)}
-            />
-          )}
-        </View>
-      ))}
+            {mode === 'view' ? (
+              <Text className="text-lg font-medium text-black">
+                {field.value}
+              </Text>
+            ) : (
+              <TextInput
+                className="border border-gray-300 p-3 rounded-lg bg-white text-black"
+                value={field.value}
+                onChangeText={text => updateField(index, text)}
+              />
+            )}
+          </View>
+        ))}
 
-      {/* Button */}
-      {mode === 'view' ? (
-        <TouchableOpacity className="bg-blue-500 p-3 rounded-lg mt-5">
-          <Text className="text-white text-center font-medium">
-            Edit Profile Info
-          </Text>
-        </TouchableOpacity>
-      ) : (
-        <TouchableOpacity
-          className="bg-green-600 p-3 rounded-lg mt-5"
-          onPress={() => onSave && onSave(formData)}
-        >
-          <Text className="text-white text-center font-medium">
-            Save Changes
-          </Text>
-        </TouchableOpacity>
-      )}
-    </ScrollView>
+        {/* Button */}
+        {mode === 'view' ? (
+          <TouchableOpacity
+            className="bg-[#d11c1c] p-4 rounded-lg mt-6"
+            onPress={onEdit}
+          >
+            <Text className="text-white text-center text-base font-semibold">
+              Edit Profile Info
+            </Text>
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity
+            className="bg-green-600 p-4 rounded-lg mt-6"
+            onPress={() => onSave && onSave(formData)}
+          >
+            <Text className="text-white text-center text-base font-semibold">
+              Save Changes
+            </Text>
+          </TouchableOpacity>
+        )}
+      </ScrollView>
+    </View>
   );
 }

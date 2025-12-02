@@ -26,10 +26,9 @@ export default function LoginScreen({ navigation }: Props) {
             },
           },
         ],
-      })
+      }),
     );
   };
-
 
   return (
     <View className="flex-1 bg-white px-6 justify-center">
@@ -91,20 +90,26 @@ export default function LoginScreen({ navigation }: Props) {
             onPress={() => setRemember(!remember)}
           >
             <View
-              className={`w-5 h-5 rounded border ${remember ? 'bg-[#B09050] border-[#B09050]' : 'border-gray-400'
-                }`}
+              className={`w-5 h-5 rounded border ${
+                remember ? 'bg-[#B09050] border-[#B09050]' : 'border-gray-400'
+              }`}
             />
             <Text className="ml-2 ">Remember me</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => { navigation.navigate("ForgotPassword") }}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('ForgotPassword');
+            }}
+          >
             <Text className="text-[#B09050] font-semibold">
               Forgot password?
             </Text>
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity className="bg-[#B09050] py-4 rounded-full mb-6"
+        <TouchableOpacity
+          className="bg-[#B09050] py-4 rounded-full mb-6"
           onPress={handleLogin}
         >
           <Text className="text-center  font-normal text-lg">Sign In</Text>

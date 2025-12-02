@@ -1,13 +1,19 @@
-import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import MailIcon from '../../assets/icons/mail.svg';
 import ThreeDotIcon from '../../assets/icons/threedot.svg';
 import { MailSettingsAction } from '../../components/Actions';
 import { useState } from 'react';
-import Icon from 'react-native-vector-icons/Ionicons';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { SettingsStackParamList } from '../../navigation/SettingsNavigator';
 import { useNavigation } from '@react-navigation/native';
-import SearchIcon from '../../assets/icons/search.svg'
+import SearchIcon from '../../assets/icons/search.svg';
 import AppHeader from '../../components/AppHeader';
 
 export const MailList = [
@@ -17,17 +23,21 @@ export const MailList = [
   'buildright.contractors@gmail.com',
 ];
 
-type Props = NativeStackNavigationProp<SettingsStackParamList, 'MailSettings'>
+type Props = NativeStackNavigationProp<SettingsStackParamList, 'MailSettings'>;
 
 export default function MailSettings() {
-  const navigation = useNavigation<Props>()
+  const navigation = useNavigation<Props>();
   const [openActionIndex, setOpenActionIndex] = useState<number | null>(null);
-  const [searchQuery, setSearchQuery] = useState('')
-
+  const [searchQuery, setSearchQuery] = useState('');
 
   return (
     <View className="flex-1 gap-y-6">
-      <AppHeader title='Mail Settings' onBack={() => { navigation.goBack() }} />
+      <AppHeader
+        title="Mail Settings"
+        onBack={() => {
+          navigation.goBack();
+        }}
+      />
 
       <View className="px-6  flex-row items-center gap-5">
         <View className="flex-1 flex-row items-center bg-white rounded-xl px-4 py-1">
@@ -41,12 +51,12 @@ export default function MailSettings() {
           />
         </View>
       </View>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        className='px-6'
-      >
+      <ScrollView showsVerticalScrollIndicator={false} className="px-6">
         {MailList.map((mail, ind) => (
-          <View key={ind} className="bg-white p-5 rounded-xl flex-row justify-between items-center">
+          <View
+            key={ind}
+            className="bg-white p-5 rounded-xl flex-row justify-between items-center"
+          >
             <MailIcon width={24} height={24} />
             <Text className="">{mail}</Text>
             <TouchableOpacity

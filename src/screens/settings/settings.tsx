@@ -23,7 +23,6 @@ export default function SettingsScreen() {
     }
   };
 
-
   return (
     <View className="flex-1">
       <View className="bg-white flex-row items-center px-6 py-4 mb-6 border-b border-b-[#D8D9E0]">
@@ -34,7 +33,12 @@ export default function SettingsScreen() {
         <View className="w-8" />
       </View>
 
-      <View className=" flex-row justify-between items-center bg-white p-3 rounded-lg mx-4 mb-4">
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate('UserProfile');
+        }}
+        className=" flex-row justify-between items-center bg-white p-3 rounded-lg mx-4 mb-4"
+      >
         <View className="flex-row gap-3 items-center ">
           <Image
             source={require('../../assets/images/profile.png')}
@@ -47,7 +51,7 @@ export default function SettingsScreen() {
           </View>
         </View>
         <ArrowIcon className="" width={12} height={12} />
-      </View>
+      </TouchableOpacity>
 
       <ScrollView showsVerticalScrollIndicator={false}>
         <View className="mx-4 gap-y-1">
