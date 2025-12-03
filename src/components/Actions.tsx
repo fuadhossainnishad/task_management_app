@@ -2,6 +2,8 @@ import EditIcon from '../assets/icons/edit.svg';
 import CompleteIcon from '../assets/icons/complete.svg';
 import DeleteIcon from '../assets/icons/delete.svg';
 import PdfIcon from '../assets/icons/pdf.svg';
+import SendInviteIcon from '../assets/icons/sendInvite.svg'
+import DeactivateIcon from '../assets/icons/deactivate.svg'
 
 import { View, Text, TouchableOpacity } from 'react-native';
 import React, { JSX, useState } from 'react';
@@ -14,6 +16,25 @@ const ActionArray = [
   {
     name: 'Completed',
     icon: <CompleteIcon height={24} width={24} />,
+  },
+  {
+    name: 'Delete',
+    icon: <DeleteIcon height={24} width={24} />,
+  },
+];
+
+const UsersActionArray = [
+  {
+    name: 'Send Invite',
+    icon: <SendInviteIcon height={24} width={24} />,
+  },
+  {
+    name: 'Edit',
+    icon: <EditIcon height={24} width={24} />,
+  },
+  {
+    name: 'Deactivate',
+    icon: <DeactivateIcon height={24} width={24} />,
   },
   {
     name: 'Delete',
@@ -79,6 +100,16 @@ export function MailSettingsAction() {
       <Actions
         actions={ActionArray.filter(action => action.name !== 'Completed')}
       />
+    </View>
+  );
+}
+
+export function UsersAction() {
+  return (
+    <View>
+      <View>
+        <Actions actions={UsersActionArray} />
+      </View>
     </View>
   );
 }

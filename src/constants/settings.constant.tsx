@@ -12,22 +12,22 @@ import { SettingsStackParamList } from '../navigation/SettingsNavigator';
 
 export type SettingItem =
   | {
-      name: string;
-      icon: JSX.Element;
-      route: Exclude<keyof SettingsStackParamList, 'InfoScreen'>;
-    }
+    name: string;
+    icon: JSX.Element;
+    route: Exclude<keyof SettingsStackParamList, 'InfoScreen'>;
+  }
   | {
-      name: string;
-      icon: JSX.Element;
-      route: 'InfoScreen';
-      params: { title: string; slug: string; content: string };
-    }
+    name: string;
+    icon: JSX.Element;
+    route: 'InfoScreen';
+    params: { title: string; slug: string; content: string };
+  }
   | {
-      name: string;
-      icon: JSX.Element;
-      route: 'InfoScreen';
-      params: { title: string; slug: string; content: string };
-    };
+    name: string;
+    icon: JSX.Element;
+    route: 'InfoScreen';
+    params: { title: string; slug: string; content: string };
+  };
 
 export const BusinessSettingsArray: SettingItem[] = [
   {
@@ -43,7 +43,7 @@ export const BusinessSettingsArray: SettingItem[] = [
   {
     name: 'Users',
     icon: <UserIcon height={24} width={24} />,
-    route: 'MailSettings',
+    route: 'Users',
   },
   {
     name: 'Roles',

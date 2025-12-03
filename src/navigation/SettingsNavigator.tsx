@@ -8,6 +8,8 @@ import CompanyProfileScreen from '../screens/settings/profile/companyProfile.scr
 import EditProfileScreen from '../screens/settings/profile/editProfile.screen';
 import UserProfileScreen from '../screens/settings/profile/userProfile.screen';
 import EditUserProfileScreen from '../screens/settings/profile/editUserProfile.screen';
+import ColorPickerScreen from '../screens/colorPicker.screen';
+import UsersManagementNavigator from './UsersNavigator copy';
 
 export type SettingsStackParamList = {
   Settings: undefined;
@@ -23,6 +25,7 @@ export type SettingsStackParamList = {
   UserProfile: undefined;
   EditUserProfile: undefined;
   Appcolor: undefined;
+  Users: undefined
 
   // CreateSettings: undefined;
   // SettingsDetails: {
@@ -82,6 +85,16 @@ export default function SettingsManagementNavigator() {
       <Stack.Screen
         name="EditUserProfile"
         component={EditUserProfileScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Appcolor"
+        component={ColorPickerScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Users"
+        component={UsersManagementNavigator}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
