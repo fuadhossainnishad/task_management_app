@@ -90,9 +90,8 @@ export default function LoginScreen({ navigation }: Props) {
             onPress={() => setRemember(!remember)}
           >
             <View
-              className={`w-5 h-5 rounded border ${
-                remember ? 'bg-[#B09050] border-[#B09050]' : 'border-gray-400'
-              }`}
+              className={`w-5 h-5 rounded border ${remember ? 'bg-[#B09050] border-[#B09050]' : 'border-gray-400'
+                }`}
             />
             <Text className="ml-2 ">Remember me</Text>
           </TouchableOpacity>

@@ -53,6 +53,11 @@ const PunchlistActionArray = [
   },
 ];
 
+export interface IAction {
+  container?: Record<string, any>
+  // actionContainer?: Record<string, any>
+}
+
 export function Actions({
   actions,
 }: {
@@ -104,12 +109,10 @@ export function MailSettingsAction() {
   );
 }
 
-export function UsersAction() {
+export function UsersAction({ container = {} }: IAction) {
   return (
-    <View>
-      <View>
-        <Actions actions={UsersActionArray} />
-      </View>
+    <View  {...container}>
+      <Actions actions={UsersActionArray} />
     </View>
   );
 }

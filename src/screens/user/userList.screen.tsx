@@ -1,24 +1,46 @@
-import { View, ScrollView, TextInput, TouchableOpacity, Text } from 'react-native';
+import { View, ScrollView, TextInput, TouchableOpacity, Text, LayoutChangeEvent } from 'react-native';
 import { listData } from "./data";
 import UserModal from "../../components/user/user.component";
 import SearchIcon from '../../assets/icons/search.svg';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import FilterIcon from '../../assets/icons/filter.svg'
 import AppHeader from '../../components/AppHeader';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { UsersStackParamList } from '../../navigation/UsersNavigator copy';
+import { UsersStackParamList } from '../../navigation/UsersNavigator';
+import { UsersAction } from '../../components/Actions';
+import ThreedotIcon from '../../assets/icons/threedot.svg'
+// import LockIcon from '../../assets/icons/lock.svg'
 
 type Props = NativeStackNavigationProp<UsersStackParamList, 'Users'>
 
 export default function UserListScreen() {
     const navigation = useNavigation<Props>()
     const [searchQuery, setSearchQuery] = useState('');
+    const [openActionIndex, setOpenActionIndex] = useState<number | null>(0)
+    const [actionPosition, setActionPosition] = useState<number>(0)
+    const scrollRef = useRef<ScrollView>(null)
+    const handleLayout = (ind: number, event: LayoutChangeEvent) => {
+        if (openActionIndex === ind) {
+            const layout = event.nativeEvent.layout
+            setActionPosition(layout.y)
+        }
+    }
+    const handlePress = (ind: number) => {
+        if (openActionIndex === ind) {
+            setOpenActionIndex(null)
+        } else {
+            setOpenActionIndex(ind)
+            scrollRef.current?.scrollTo({ y: actionPosition, animated: true })
+        }
+    }
 
     return (
         <View className="flex-1 ">
             <AppHeader title='User Management' onBack={() => { navigation.goBack() }} />
-            <View className="px-6  flex-row items-center gap-5">
+            <View
+                className="px-6  flex-row items-center gap-5"
+            >
                 <View className="flex-1 flex-row items-center bg-white rounded-lg px-4 py-2">
                     <SearchIcon height={16} width={16} className="" />
 
@@ -45,10 +67,34 @@ export default function UserListScreen() {
                 </TouchableOpacity>
             </View>
             <ScrollView
-                className=''
+                ref={scrollRef}
+                className='px-3'
             >
                 {listData.map((item, ind) => (
-                    <UserModal data={item} key={ind} />
+                    <View key={ind} className='flex-row justify-between relative'
+                        onLayout={(event) => handleLayout(ind, event)}
+                    >
+                        <UserModal data={item} />
+                        <View className='flex-col gap-2 items-end self-center'>
+                            <TouchableOpacity className='' onPress={() => handlePress(ind)}>
+                                {/* <LockIcon height={16} width={16} /> */}
+                                <ThreedotIcon height={16} width={16} className='' />
+
+                            </TouchableOpacity>
+                            <View className='py-1 px-2 bg-[#E9FFF4] rounded-md'>
+                                <Text>Active</Text>
+                            </View>
+                        </View>
+
+                        {
+                            openActionIndex === ind && <UsersAction container={{
+                                className: "absolute right-0 bg-white rounded-2xl shadow shadow-md",
+                                style: { top: actionPosition + 20, marginRight: 20 },
+
+                            }} />
+                        }
+                    </View>
+
                 ))}
             </ScrollView>
             <TouchableOpacity
@@ -62,3 +108,4 @@ export default function UserListScreen() {
         </View>
     )
 }
+

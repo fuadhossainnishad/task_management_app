@@ -3,7 +3,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
 import UserListScreen from '../screens/user/userList.screen';
-import AddNewMailScreen from '../screens/settings/addNewMail.screen';
 import AddNewUserScreen from '../screens/user/addNewUser.screen';
 
 export type UsersStackParamList = {
@@ -35,12 +34,9 @@ export default function UsersManagementNavigator() {
         component={UserListScreen}
         options={{ headerShown: false }}
       />
-      <Stack.Screen
-        name="AddNewUser"
-        component={AddNewUserScreen}
-        options={{ headerShown: false }}
-      />
-
+      <Stack.Screen name='AddNewUser' options={{ headerShown: false }}>
+        {props => <AddNewUserScreen {...props} data={props.route.params!} />}
+      </Stack.Screen>
     </Stack.Navigator>
   );
 }

@@ -9,7 +9,7 @@ import EditProfileScreen from '../screens/settings/profile/editProfile.screen';
 import UserProfileScreen from '../screens/settings/profile/userProfile.screen';
 import EditUserProfileScreen from '../screens/settings/profile/editUserProfile.screen';
 import ColorPickerScreen from '../screens/colorPicker.screen';
-import UsersManagementNavigator from './UsersNavigator copy';
+import UsersManagementNavigator from './UsersNavigator';
 
 export type SettingsStackParamList = {
   Settings: undefined;
