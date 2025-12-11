@@ -10,6 +10,9 @@ import UserProfileScreen from '../screens/settings/profile/userProfile.screen';
 import EditUserProfileScreen from '../screens/settings/profile/editUserProfile.screen';
 import ColorPickerScreen from '../screens/colorPicker.screen';
 import UsersManagementNavigator from './UsersNavigator';
+import RolePermissionScreen from '../screens/settings/rolePermission.screen copy';
+import AddNewRoleScreen from '../screens/settings/addNewRole.screen';
+import SubscriptionScreen from '../screens/settings/subscription/subscription.screen';
 
 export type SettingsStackParamList = {
   Settings: undefined;
@@ -25,8 +28,12 @@ export type SettingsStackParamList = {
   UserProfile: undefined;
   EditUserProfile: undefined;
   Appcolor: undefined;
-  Users: undefined
+  Users: undefined;
+  RolePermission: undefined;
+  AddNewRole: undefined;
+  Subscription: undefined;
 
+  // Logout: undefined;
   // CreateSettings: undefined;
   // SettingsDetails: {
   //   Settings: {
@@ -97,6 +104,26 @@ export default function SettingsManagementNavigator() {
         component={UsersManagementNavigator}
         options={{ headerShown: false }}
       />
+      <Stack.Screen
+        name="RolePermission"
+        component={RolePermissionScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="AddNewRole"
+        component={AddNewRoleScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Subscription"
+        component={SubscriptionScreen}
+        options={{ headerShown: false }}
+      />
+      {/* <Stack.Screen
+        name="Logout"
+        component={LoginScreen}
+        options={{ headerShown: false }}
+      /> */}
     </Stack.Navigator>
   );
 }

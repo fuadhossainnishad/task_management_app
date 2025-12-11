@@ -86,7 +86,9 @@ export default function SettingsScreen() {
             </TouchableOpacity>
           ))}
         </View>
-        <TouchableOpacity className="mx-4 mt-8 mb-4 gap-y-1 flex-row items-center gap-5 bg-[#D8D9E0] px-3 py-4 rounded-lg">
+        <TouchableOpacity className="mx-4 mt-8 mb-4 gap-y-1 flex-row items-center gap-5 bg-[#D8D9E0] px-3 py-4 rounded-lg"
+        onPress={navigation.navigate('')}
+        >
           <LogoutIcon width={24} height={24} />
           <Text>Logout</Text>
         </TouchableOpacity>

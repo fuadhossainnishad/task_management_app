@@ -109,10 +109,19 @@ export function MailSettingsAction() {
   );
 }
 
-export function UsersAction({ container = {} }: IAction) {
+export function UsersAction({ container = {}, onActionPress }: { container?: any, onActionPress: (name: string) => void }) {
   return (
-    <View  {...container}>
-      <Actions actions={UsersActionArray} />
+    <View {...container}>
+      {UsersActionArray.map((action, ind) => (
+        <TouchableOpacity
+          key={ind}
+          className="flex-row gap-3 items-center p-3 px-5 rounded-lg bg-white shadow"
+          onPress={() => onActionPress(action.name)}
+        >
+          {action.icon}
+          <Text className="text-base">{action.name}</Text>
+        </TouchableOpacity>
+      ))}
     </View>
   );
 }
