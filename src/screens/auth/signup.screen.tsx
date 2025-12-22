@@ -36,8 +36,8 @@ export default function SignupScreen() {
   const [companyLogo, setCompanyLogo] = useState<string | null>(null);
 
   const navigation = useNavigation<SignupScreensProps>();
-  const router = useRoute<RouteParams>()
-  const appColor = router.params?.selectedColor! || '#B09050'
+  const router = useRoute<RouteParams>();
+  const appColor = router.params?.selectedColor! || '#B09050';
 
   // useEffect(() => {
   //   setAppColor(router.params?.selectedColor!)
@@ -229,7 +229,9 @@ export default function SignupScreen() {
             />
             <TouchableOpacity
               className="items-center flex-row self-center mt-2"
-              onPress={() => { navigation.navigate('ColorPicker') }}
+              onPress={() => {
+                navigation.navigate('ColorPicker');
+              }}
             >
               <Image
                 source={require('../../assets/icons/change.png')}
@@ -252,8 +254,9 @@ export default function SignupScreen() {
               onPress={() => setRemember(!remember)}
             >
               <View
-                className={`w-5 h-5 rounded border ${remember ? 'bg-[#B09050] border-[#B09050]' : 'border-gray-400'
-                  }`}
+                className={`w-5 h-5 rounded border ${
+                  remember ? 'bg-[#B09050] border-[#B09050]' : 'border-gray-400'
+                }`}
               />
               <Text className="ml-2">
                 I agree to the Privacy Policy and Terms & Conditions
@@ -262,7 +265,8 @@ export default function SignupScreen() {
           </View>
 
           {/* Submit Button */}
-          <TouchableOpacity className=" py-4 rounded-full"
+          <TouchableOpacity
+            className=" py-4 rounded-full"
             style={[styles.buttonBg, { backgroundColor: appColor }]}
           >
             <Text className="text-center font-normal text-lg">
@@ -282,7 +286,5 @@ const styles = StyleSheet.create({
     textDecorationStyle: 'solid',
     textUnderlineOffset: 12,
   } as TextStyle,
-  buttonBg: {
-
-  }
+  buttonBg: {},
 });
