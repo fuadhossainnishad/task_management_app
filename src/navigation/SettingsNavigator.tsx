@@ -1,0 +1,129 @@
+import React from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import SettingsScreen from '../features/settings/screens/settings';
+import MailSettings from '../features/settings/screens/mailSetting.screen';
+import AddNewMailScreen from '../features/settings/screens/addNewMail.screen';
+import InfoScreen from '../features/settings/screens/info/info.screen';
+import CompanyProfileScreen from '../features/settings/screens/profile/companyProfile.screen';
+import EditProfileScreen from '../features/settings/screens/profile/editProfile.screen';
+import UserProfileScreen from '../features/settings/screens/profile/userProfile.screen';
+import EditUserProfileScreen from '../features/settings/screens/profile/editUserProfile.screen';
+import UsersManagementNavigator from './UsersNavigator';
+import RolePermissionScreen from '../features/settings/screens/rolePermission.screen copy';
+import AddNewRoleScreen from '../features/settings/screens/addNewRole.screen';
+import SubscriptionScreen from '../features/settings/screens/subscription/subscription.screen';
+import ColorPickerScreen from '../features/onboarding/screens/colorPicker.screen';
+
+export type SettingsStackParamList = {
+  Settings: undefined;
+  MailSettings: undefined;
+  AddNewMail: undefined;
+  InfoScreen: {
+    title: string;
+    content?: string;
+    slug?: string;
+  };
+  Profile: undefined;
+  EditProfile: undefined;
+  UserProfile: undefined;
+  EditUserProfile: undefined;
+  Appcolor: undefined;
+  Users: undefined;
+  RolePermission: undefined;
+  AddNewRole: undefined;
+  Subscription: undefined;
+
+  // Logout: undefined;
+  // CreateSettings: undefined;
+  // SettingsDetails: {
+  //   Settings: {
+  //     id: string;
+  //     date: string;
+  //     SettingsName: string;
+  //     custName: string;
+  //     phone: string;
+  //     email: string;
+  //     address: string;
+  //     creator: string;
+  //     status: string;
+  //   };
+  // };
+};
+
+export default function SettingsManagementNavigator() {
+  const Stack = createNativeStackNavigator<SettingsStackParamList>();
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Settings"
+        component={SettingsScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="MailSettings"
+        component={MailSettings}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="AddNewMail"
+        component={AddNewMailScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="InfoScreen"
+        component={InfoScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Profile"
+        component={CompanyProfileScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="EditProfile"
+        component={EditProfileScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="UserProfile"
+        component={UserProfileScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="EditUserProfile"
+        component={EditUserProfileScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Appcolor"
+        component={ColorPickerScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Users"
+        component={UsersManagementNavigator}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="RolePermission"
+        component={RolePermissionScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="AddNewRole"
+        component={AddNewRoleScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Subscription"
+        component={SubscriptionScreen}
+        options={{ headerShown: false }}
+      />
+      {/* <Stack.Screen
+        name="Logout"
+        component={LoginScreen}
+        options={{ headerShown: false }}
+      /> */}
+    </Stack.Navigator>
+  );
+}
