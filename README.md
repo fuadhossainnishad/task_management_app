@@ -1,97 +1,332 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 📱 Task Management App (React Native)
 
-# Getting Started
+A **production-grade React Native application** built with a **feature-based, scalable architecture**, designed for maintainability, modularity, and long-term team growth.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+This project follows **clean architecture principles adapted for mobile**, separating concerns across domain features, infrastructure, navigation, and shared system utilities.
 
-## Step 1: Start Metro
+---
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+# 🏗️ System Architecture Overview
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+This application is structured using a **feature-first modular architecture**:
 
-```sh
-# Using npm
+```
+src/
+├── app/              # Application bootstrap & providers layer
+├── bootstrap/        # App initialization & state resolution
+├── navigation/       # Navigation graphs (stack, tab, feature navigators)
+├── features/         # Domain-driven modules (auth, home, job, etc.)
+├── shared/           # Reusable UI components, hooks, utilities
+├── infrastructure/   # External systems (storage, API, state management)
+├── config/           # Environment & app configuration
+└── api/              # API client layer
+```
+
+---
+
+## 🧠 Architectural Philosophy
+
+This project is built on 4 core principles:
+
+### 1. Feature Isolation (Vertical Slicing)
+
+Each feature owns its:
+
+* Screens
+* Services
+* Types (if needed)
+* Business logic
+
+Example:
+
+```
+features/auth/
+features/job/
+features/settings/
+```
+
+👉 Features do NOT depend on each other directly.
+
+---
+
+### 2. Infrastructure Separation
+
+External concerns are isolated:
+
+* API communication → `api/`
+* Persistent storage → `infrastructure/storage`
+* State management → `infrastructure/state`
+
+This ensures **UI/business logic is decoupled from external systems**.
+
+---
+
+### 3. Navigation as a First-Class Layer
+
+Navigation is modular:
+
+```
+navigation/
+├── AppNavigator.tsx
+├── BottomNavigator.tsx
+├── OnboardingNavigator.tsx
+├── JobNavigator.tsx
+...
+```
+
+Each domain can scale independently without breaking global routing.
+
+---
+
+### 4. App Bootstrap Lifecycle
+
+The app boot process is controlled centrally:
+
+```
+App → AppBootstrap → useAppInit → Navigator Selection
+```
+
+### Boot states:
+
+```ts
+loading → onboarding → unauthenticated → authenticated
+```
+
+This ensures:
+
+* clean auth gating
+* onboarding control
+* predictable app entry flow
+
+---
+
+# 🚀 Getting Started
+
+## 1. Install dependencies
+
+```bash
+npm install
+```
+
+---
+
+## 2. Run Metro bundler
+
+```bash
 npm start
-
-# OR using Yarn
-yarn start
 ```
 
-## Step 2: Build and run your app
+---
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+## 3. Run Android
 
-### Android
-
-```sh
-# Using npm
+```bash
 npm run android
-
-# OR using Yarn
-yarn android
 ```
 
-### iOS
+---
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+## 4. Run iOS
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
+```bash
 npm run ios
-
-# OR using Yarn
-yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+---
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+# ⚙️ Tech Stack
 
-## Step 3: Modify your app
+### Core
 
-Now that you have successfully run the app, let's make changes!
+* React Native 0.86+
+* React 19
+* TypeScript
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+### Navigation
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+* React Navigation (Native Stack + Bottom Tabs)
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+### State & Data
 
-## Congratulations! :tada:
+* React Query (`@tanstack/react-query`)
 
-You've successfully run and modified your React Native App. :partying_face:
+### Storage
 
-### Now what?
+* AsyncStorage
+* Secure storage abstraction
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+### UI System
 
-# Troubleshooting
+* NativeWind (Tailwind-style styling for RN)
+* React Native SVG
+* Reanimated
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+---
 
-# Learn More
+# 🎨 Styling Strategy
 
-To learn more about React Native, take a look at the following resources:
+This project uses **NativeWind (Tailwind for React Native)**:
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+```tsx
+<View className="flex-1 bg-white items-center justify-center">
+```
+
+### Configuration:
+
+* `tailwind.config.js` → design system
+* `global.css` → NativeWind entry
+* `metro.config.js` → NativeWind transformer
+
+---
+
+# 🧭 Navigation Strategy
+
+### Root Stack:
+
+* Onboarding flow
+* Auth flow
+* App (Bottom Tabs)
+
+### Nested Navigation:
+
+* Feature-based stacks (Job, Settings, etc.)
+
+Example:
+
+```
+HomeTab
+ ├── Home
+ ├── Jobs
+ ├── Settings
+```
+
+---
+
+# 🔐 Authentication Flow
+
+Handled via:
+
+```
+useAppInit()
+```
+
+### Decision Tree:
+
+```
+If onboarding not completed → Onboarding flow
+Else if no token → Auth flow
+Else → Main app
+```
+
+---
+
+# 📦 Feature Structure Standard
+
+Each feature follows:
+
+```
+features/auth/
+├── screens/
+├── services/
+├── hooks (optional future)
+├── types (optional)
+```
+
+---
+
+# 🧩 Shared Layer
+
+Reusable system components:
+
+* UI Components (Buttons, Inputs, Modals)
+* Hooks
+* Utilities
+* Constants
+
+---
+
+# 🏗️ Infrastructure Layer
+
+Handles system-level concerns:
+
+### State
+
+* Query client setup
+
+### Storage
+
+* Secure storage abstraction
+* Async persistence layer
+
+---
+
+# 🧪 Development Guidelines
+
+### 1. Do not cross-import features
+
+Bad:
+
+```ts
+features/auth → features/job ❌
+```
+
+### 2. Use shared layer for reuse
+
+```ts
+shared/components ✔
+```
+
+### 3. Keep business logic inside feature/services
+
+Not inside screens.
+
+---
+
+# 📈 Scalability Design Goals
+
+This architecture is designed to support:
+
+* Multi-team development
+* Feature-based ownership
+* Easy onboarding of new developers
+* Large-scale enterprise apps
+* Clean separation of UI / domain / infra
+
+---
+
+# 🧠 Engineering Notes
+
+This project intentionally avoids:
+
+* Global monolithic state
+* Tight coupling between screens
+* Navigation logic inside components
+* Direct API calls from UI layer
+
+Instead it follows:
+
+> “UI is dumb, features are smart, infrastructure is invisible.”
+
+---
+
+# 🧭 Future Improvements (Roadmap)
+
+* Zustand / Redux Toolkit integration (if needed)
+* Feature-level testing (Jest + Detox)
+* CI/CD pipeline (GitHub Actions)
+* Code splitting for large features
+* Design system layer (tokens + components)
+* API layer abstraction upgrade (Axios interceptors + retry strategy)
+
+---
+
+# 📌 Summary
+
+This is not just a React Native project.
+
+It is a **modular mobile system architecture** designed for:
+
+* Scale
+* Maintainability
+* Team collaboration
+* Long-term evolution
