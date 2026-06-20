@@ -1,4 +1,5 @@
 import AppNavigator from "../navigation/AppNavigator";
+import AuthNavigator from "../navigation/AuthNavigator";
 import OnboardingNavigator from "../navigation/OnboardingNavigator";
 import useAppInit from "./bootstrap/useAppInit";
 
@@ -13,7 +14,7 @@ export default function AppBootstrap() {
             return <OnboardingNavigator />;
 
         case 'unauthenticated':
-            return <OnboardingNavigator />;
+            return <AuthNavigator />;
 
         case 'authenticated':
             return <AppNavigator />;

@@ -4,6 +4,8 @@ import { View, Text, Image, TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { RootStackParamList } from '../../../navigation/AppNavigator';
 import { useNavigation } from '@react-navigation/native';
+import { AsyncStorageError } from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 type Props = NativeStackNavigationProp<RootStackParamList, 'Onboarding3'>;
@@ -38,7 +40,7 @@ export default function OnboardingScreen3() {
           <TouchableOpacity onPress={() => navigation.navigate('Onboarding2')}>
             <Text className="text-lg font-semibold">GO BACK</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+          <TouchableOpacity onPress={() => AsyncStorage.setItem("onboarding_complete", true)}>
             <Text className="text-lg font-semibold">START</Text>
           </TouchableOpacity>
 
